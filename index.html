@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طيبة الأثر | صدقة جارية عن فوفانا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Reem+Kufi:wght@400;500;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --primary-dark: #0f2027;
+            --primary-light: #203a43;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --bg-cream: #fdfbf7;
+            --text-main: #2c3e50;
+            --rose-primary: #b76e79;
+            --rose-light: #fff0f3;
+            --shadow-soft: 0 8px 32px rgba(0,0,0,0.06);
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', system-ui, sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-main);
+            min-height: 100vh;
+            direction: rtl;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ── Mobile Menu Toggle ── */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 1000;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--gold);
+            color: var(--primary-dark);
+            font-size: 1.3rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+        .mobile-toggle:hover { transform: scale(1.08); }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            width: 300px;
+            background: linear-gradient(145deg, var(--primary-dark), var(--primary-light));
+            color: white;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 2.5rem 1.8rem;
+            box-shadow: 6px 0 30px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, var(--gold) 1.5px, transparent 2px),
+                radial-gradient(circle at 80% 70%, var(--gold) 1.5px, transparent 2px);
+            background-size: 40px 40px;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(212,175,55,0.25);
+        }
+
+        .logo-section h1 {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            text-shadow: 0 3px 12px rgba(0,0,0,0.5);
+            margin-bottom: 0.4rem;
+        }
+
+        .logo-section p {
+            font-family: 'Amiri', serif;
+            color: rgba(243,229,171,0.9);
+            font-size: 1.05rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.88);
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(212,175,55,0.12);
+            border-radius: 12px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            transform: scaleX(1);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .nav-links a i {
+            width: 24px;
+            text-align: center;
+            font-size: 1.25rem;
+        }
+
+        /* ── Main Content ── */
+        .main-content {
+            flex: 1;
+            padding: 2.5rem 3rem;
+            overflow-y: auto;
+        }
+
+        .header-welcome {
+            background: white;
+            border-radius: 20px;
+            padding: 2.2rem 2.8rem;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.8rem;
+            border-bottom: 4px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-welcome::after {
+            content: 'طيبة الأثر';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            font-size: 9rem;
+            font-family: 'Reem Kufi';
+            color: rgba(212,175,55,0.03);
+            pointer-events: none;
+            transform: rotate(-12deg);
+        }
+
+        .welcome-text h2 {
+            font-family: 'Amiri', serif;
+            color: var(--primary-dark);
+            font-size: 2.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hijri-date {
+            background: linear-gradient(45deg, var(--gold), #e0c068);
+            color: var(--primary-dark);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-family: 'Amiri';
+            font-weight: 700;
+            box-shadow: 0 5px 18px rgba(212,175,55,0.35);
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #f0f0f0;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.09);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 2px solid #f5f5f5;
+        }
+
+        .card-header i {
+            font-size: 1.9rem;
+            color: white;
+            background: var(--primary-dark);
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        /* Women Section Special Styling */
+        .women-section-header i {
+            background: var(--rose-primary);
+        }
+
+        .women-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 1.6rem;
+        }
+
+        .woman-card {
+            background: var(--rose-light);
+            border: 1px solid rgba(183,110,121,0.18);
+            border-radius: 16px;
+            padding: 2rem 1.6rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .woman-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+            background: var(--rose-primary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: var(--transition);
+        }
+
+        .woman-card:hover {
+            transform: translateY(-6px);
+            background: white;
+            box-shadow: 0 12px 32px rgba(183,110,121,0.18);
+        }
+
+        .woman-card:hover::before { transform: scaleX(1); }
+
+        .woman-card i {
+            font-size: 2.8rem;
+            color: var(--rose-primary);
+            margin-bottom: 1.2rem;
+        }
+
+        .woman-card h4 {
+            font-family: 'Amiri';
+            color: var(--primary-dark);
+            font-size: 1.35rem;
+        }
+
+        /* Modal Improvements */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,32,39,0.92);
+            z-index: 2000;
+            display: none;
+            place-items: center;
+            backdrop-filter: blur(6px);
+        }
+
+        .modal.active { display: flex; }
+
+        .modal-content {
+            background: #fffcf6;
+            width: 92%;
+            max-width: 920px;
+            max-height: 90vh;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 70px rgba(0,0,0,0.45);
+            animation: slideUpModal 0.4s ease;
+        }
+
+        .modal-header {
+            background: var(--primary-dark);
+            color: var(--gold);
+            padding: 1.4rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-modal {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            background: #c0392b;
+            transform: rotate(180deg);
+        }
+
+        .modal-body {
+            padding: 2.8rem;
+            overflow-y: auto;
+            font-family: 'Amiri', serif;
+            font-size: 1.55rem;
+            line-height: 2.45;
+            color: #2f2f2f;
+        }
+
+        .ayah-number {
+            font-size: 0.95rem;
+            color: var(--gold);
+            border: 1.5px solid var(--gold);
+            border-radius: 50%;
+            padding: 3px 9px;
+            margin: 0 6px;
+            vertical-align: middle;
+            font-weight: 600;
+        }
+
+        @keyframes slideUpModal {
+            from { transform: translateY(60px); opacity: 0; }
+            to   { transform: translateY(0);   opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-content { padding: 2rem; }
+        }
+
+        @media (max-width: 992px) {
+            .mobile-toggle { display: block; }
+            .sidebar {
+                position: fixed;
+                inset: 0 0 0 auto;
+                width: 82%;
+                max-width: 320px;
+                transform: translateX(100%);
+            }
+            .sidebar.active { transform: translateX(0); }
+            .header-welcome { flex-direction: column; text-align: center; gap: 1.5rem; }
+            .main-content { padding-top: 80px; }
+        }
+
+        @media (max-width: 600px) {
+            .modal-body { padding: 1.8rem; font-size: 1.35rem; line-height: 2.2; }
+            .women-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="modal" id="infoModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">عنوان</h3>
+            <button class="close-modal" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
+<button class="mobile-toggle" aria-label="فتح القائمة" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+</button>
+
+<div class="app-container">
+    <aside class="sidebar" id="sidebar">
+        <div class="logo-section">
+            <h1>طيبة الأثر</h1>
+            <p>صدقة جارية عن فوفانا رحمها الله</p>
+            <p style="font-size:0.82rem; margin-top:8px; opacity:0.6;">
+                «نسألكم الدعاء والاستغفار لها»
+            </p>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+            <li><a href="#women"><i class="fas fa-female"></i> المرأة المسلمة</a></li>
+            <li><a href="#quran"><i class="fas fa-book-quran"></i> المصحف (ورش)</a></li>
+            <li><a href="#radio"><i class="fas fa-broadcast-tower"></i> الإذاعة</a></li>
+            <li><a href="#tasbih"><i class="fas fa-pray"></i> المسبحة</a></li>
+            <li><a href="#athkar"><i class="fas fa-hands-praying"></i> الأذكار</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+
+        <div class="header-welcome">
+            <div class="welcome-text">
+                <h2>مرحبًا بك في طيبة الأثر</h2>
+                <span style="color:#555; font-size:1.1rem;">موقع إسلامي شامل – صدقة جارية</span>
+            </div>
+            <div class="hijri-date" id="hijriDate"></div>
+        </div>
+
+        <!-- باقي الأقسام كما هي مع تعديلات طفيفة في الأيقونات والـ id -->
+
+        <div class="card" id="women">
+            <div class="card-header women-section-header">
+                <i class="fas fa-female"></i>
+                <h3>ركن المرأة المسلمة</h3>
+            </div>
+            <div class="women-grid" id="womenGrid"></div>
+        </div>
+
+        <!-- ... باقي الأقسام (الإذاعة – المسبحة – الأذكار – المصحف) كما في الكود الأصلي ... -->
+
+        <footer style="text-align:center; padding:3rem 1rem; color:#777; border-top:1px solid #e8e8e8; margin-top:3rem;">
+            <p style="font-size:1.1rem; margin-bottom:0.6rem;">
+                صدقة جارية عن الفقيدة فوفانا رحمها الله وغفر لها
+            </p>
+            <p style="font-size:0.9rem; opacity:0.8;">اللهم اجعل القرآن ربيع قلبها ونور قبرها</p>
+        </footer>
+
+    </main>
+</div>
+
+<script>
+// ── التاريخ الهجري ──
+document.addEventListener('DOMContentLoaded', () => {
+    const options = {
+        calendar: 'islamic-umalqura',
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+    document.getElementById('hijriDate').textContent = 
+        new Intl.DateTimeFormat('ar-SA', options).format(new Date());
+});
+
+// ── Sidebar Mobile Toggle ──
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('active');
+}
+
+// ── Modal System ──
+const modal = document.getElementById('infoModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+
+function openModal(title, htmlContent) {
+    modalTitle.textContent = title;
+    modalBody.innerHTML = htmlContent;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => modalBody.innerHTML = '', 400);
+}
+
+modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+});
+
+// باقي الجافاسكريبت (womenContent, fetchSurah, radio, tasbih, athkar) نفسها مع تصحيح الخطأ في id المسبحة:
+// غيّر countDisplay.innerText إلى document.getElementById('tasbihCounter').innerText
+
+// مثال تصحيح سريع للمسبحة:
+let tasbihCount = 0;
+document.getElementById('incrementBtn')?.addEventListener('click', () => {
+    tasbihCount++;
+    document.getElementById('tasbihCounter').textContent = tasbihCount.toString().padStart(3,'0');
+    if (navigator.vibrate) navigator.vibrate([30,20,30]);
+});
+
+function resetTasbih() {
+    if (confirm('هل أنت متأكد من تصفير العداد؟')) {
+        tasbihCount = 0;
+        document.getElementById('tasbihCounter').textContent = '000';
+    }
+}
+</script>
+</body>
+</html>
